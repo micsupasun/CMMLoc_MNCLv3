@@ -8,9 +8,9 @@
 #SBATCH --mem=400G
 #SBATCH --time=15-0:00:00
 ### #SBATCH --time=2:00:00
-#SBATCH --job-name=cmmloc_develop
-#SBATCH --output=/share/nas/cs-nas/zh932237/CMMLoc_develop/logs/%x-%j.out
-#SBATCH --error=/share/nas/cs-nas/zh932237/CMMLoc_develop/logs/%x-%j.err
+#SBATCH --job-name=CMMLoc_MNCLv3
+#SBATCH --output=/share/nas/cs-nas/zh932237/CMMLoc_MNCLv3/logs/%x-%j.out
+#SBATCH --error=/share/nas/cs-nas/zh932237/CMMLoc_MNCLv3/logs/%x-%j.err
 
 # ---- Force ALL caches to node-local (avoid /home and /share/nas quotas) ----
 CACHE_BASE=/share/nas/cs-nas/zh932237/hf_cache
@@ -37,11 +37,11 @@ echo "XDG_CACHE_HOME=$XDG_CACHE_HOME"
 
 set -euo pipefail
 
-cd /share/nas/cs-nas/zh932237/CMMLoc_develop
+cd /share/nas/cs-nas/zh932237/CMMLoc_MNCLv3
 mkdir -p logs
 
 # Activate your env (optional for hostname, but fine to keep)
-source  /share/nas/cs-nas/zh932237/env_cmmloc_develop/bin/activate
+source  /share/nas/cs-nas/zh932237/env_cmmloc_mnclv3/bin/activate
 
 # Optional: show GPUs allocated
 echo "Host: $(hostname)"
@@ -50,6 +50,6 @@ nvidia-smi -L
 # Your requested command:
 hostname
 
-python -m evaluation.pipeline --base_path "./data/k360_30-10_scG_pd10_pc4_spY_all/" --use_features class color position num --use_test_set --no_pc_augment --no_pc_augment_fine --hungging_model t5-large --fixed_embedding --path_coarse "./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch9_acc0.700_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth" --path_fine "./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/fine_batch16_epoch45/fine_contN_epoch10_offset0.694_lr0.0003_obj-6-16_ecl0_eco0_p256_npa1_f-class-color-position-num.pth"
+python -m evaluation.pipeline --base_path "./data/k360_30-10_scG_pd10_pc4_spY_all/" --use_features class color position num --no_pc_augment --no_pc_augment_fine --hungging_model t5-large --fixed_embedding --path_coarse "./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch9_acc0.700_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth" --path_fine "./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/fine_batch16_epoch45/fine_contN_epoch10_offset0.694_lr0.0003_obj-6-16_ecl0_eco0_p256_npa1_f-class-color-position-num.pth"
 
 
