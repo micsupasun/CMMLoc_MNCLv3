@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=64
 #SBATCH --mem=400G
-#SBATCH --time=30-0:00:00
+#SBATCH --time=15-0:00:00
 ### #SBATCH --time=2:00:00
 #SBATCH --job-name=cmmloc_develop
 #SBATCH --output=/share/nas/cs-nas/zh932237/CMMLoc_develop/logs/%x-%j.out
