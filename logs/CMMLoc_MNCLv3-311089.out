@@ -1,0 +1,83 @@
+HF_HOME=/share/nas/cs-nas/zh932237/hf_cache/hf
+HF_HUB_CACHE=/share/nas/cs-nas/zh932237/hf_cache/hub
+TRANSFORMERS_CACHE=/share/nas/cs-nas/zh932237/hf_cache/transformers
+XDG_CACHE_HOME=/share/nas/cs-nas/zh932237/hf_cache/xdg
+Host: racc2-gpu-2.act.rdg.ac.uk
+GPU 0: NVIDIA L40S (UUID: GPU-9f1e7c64-6492-99db-fc58-84d646d70065)
+racc2-gpu-2.act.rdg.ac.uk
+Namespace(train=False
+ batch_size=1
+ dataset='K360'
+ base_path='E:\\Github storage\\CMMLocPP\\data\\k360_30-10_scG_pd10_pc4_spY_all'
+ path_coarse='/share/nas/cs-nas/zh932237/CMMLoc_MNCLv3/checkpoints/k360_30-10_scG_pd10_pc4_spY_all/ash_file/cmmlocpp_mncl_rerank_v1/coarse_contN_epoch3_acc0.796_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth'
+ path_coarse_secondary=''
+ path_fine=None
+ input_drop=0.2
+ drop=0.2
+ n_heads=4
+ sft_factor=0.6
+ top_k=[1
+ 3
+ 5
+ 10]
+ threshs=[5
+ 10
+ 15]
+ use_features=['class'
+ 'color'
+ 'position'
+ 'num']
+ use_test_set=False
+ no_pc_augment=True
+ no_pc_augment_fine=True
+ plot_retrievals=False
+ plot_matches=False
+ coarse_only=True
+ coarse_fusion='single'
+ coarse_weight_primary=1.0
+ coarse_weight_secondary=1.0
+ rrf_k=60
+ rerank_topn=50
+ rerank_label_weight=0.6
+ rerank_color_weight=1.0
+ rerank_base_weight=1.0
+ use_model_reranker=True
+ block_head=8
+ fuse_layer=1
+ depth=3
+ num_objects=16
+ fine_embed_dim=128
+ fine_num_decoder_heads=4
+ fine_num_decoder_layers=2
+ pad_size=16
+ num_mentioned=6
+ describe_by='all'
+ margin=0.35
+ temperature=0.1
+ ranking_loss='pairwise'
+ coarse_embed_dim=256
+ pointnet_layers=3
+ pointnet_variation=0
+ pointnet_numpoints=256
+ pointnet_path='/share/nas/cs-nas/zh932237/CMMLoc_MNCLv3/checkpoints/pointnet_acc0.86_lr1_p256.pth'
+ pointnet_freeze=False
+ pointnet_features=2
+ class_embed=False
+ color_embed=False
+ object_size=28
+ object_inter_module_num_heads=4
+ object_inter_module_num_layers=2
+ hungging_model='t5-large'
+ fixed_embedding=True
+ text_max_length=96
+ prealign_pointnet_path=''
+ prealign_color_path=''
+ prealign_mlp_path=''
+ inter_module_num_heads=4
+ inter_module_num_layers=1
+ intra_module_num_heads=4
+ intra_module_num_layers=1
+ fine_intra_module_num_heads=4
+ fine_intra_module_num_layers=1) 
+
+device: cuda NVIDIA L40S
