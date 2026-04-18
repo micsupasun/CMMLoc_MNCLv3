@@ -1,0 +1,53 @@
+#!/bin/bash
+#SBATCH -p csgpus
+###SBATCH --gres=gpu:H100:2
+#SBATCH --gres=gpu:1
+#SBATCH --nodelist=racc2-gpu-2
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=64
+#SBATCH --mem=400G
+#SBATCH --time=15-0:00:00
+### #SBATCH --time=2:00:00
+#SBATCH --job-name=CMMLoc_MNCLv3
+#SBATCH --output=/share/nas/cs-nas/zh932237/CMMLoc_MNCLv3/logs/%x-%j.out
+#SBATCH --error=/share/nas/cs-nas/zh932237/CMMLoc_MNCLv3/logs/%x-%j.err
+
+# ---- Force ALL caches to node-local (avoid /home and /share/nas quotas) ----
+CACHE_BASE=/share/nas/cs-nas/zh932237/hf_cache
+mkdir -p "$CACHE_BASE"/{hf,hub,transformers,torch,xdg,tmp,pip}
+
+export HF_HOME="$CACHE_BASE/hf"
+export HF_HUB_CACHE="$CACHE_BASE/hub"
+export TRANSFORMERS_CACHE="$CACHE_BASE/transformers"
+export TORCH_HOME="$CACHE_BASE/torch"
+export XDG_CACHE_HOME="$CACHE_BASE/xdg"
+export TMPDIR="$CACHE_BASE/tmp"
+export PIP_CACHE_DIR="$CACHE_BASE/pip"
+
+# Show what will be used (very important for debugging)
+echo "HF_HOME=$HF_HOME"
+echo "HF_HUB_CACHE=$HF_HUB_CACHE"
+echo "TRANSFORMERS_CACHE=$TRANSFORMERS_CACHE"
+echo "XDG_CACHE_HOME=$XDG_CACHE_HOME"
+# -------------------------------------------------------------------------
+
+
+
+
+
+set -euo pipefail
+
+cd /share/nas/cs-nas/zh932237/CMMLoc_MNCLv3
+mkdir -p logs
+
+# Activate your env (optional for hostname, but fine to keep)
+source  /share/nas/cs-nas/zh932237/env_cmmloc_mnclv3/bin/activate
+
+# Optional: show GPUs allocated
+echo "Host: $(hostname)"
+nvidia-smi -L
+
+# Your requested command:
+hostname
+
+python -m evaluation.pipeline --base_path "E:\Github storage\CMMLocPP\data\k360_30-10_scG_pd10_pc4_spY_all" --use_features class color position num --no_pc_augment --no_pc_augment_fine --hungging_model t5-large --fixed_embedding --text_max_length 96 --use_model_reranker --rerank_topn 50 --path_coarse "/share/nas/cs-nas/zh932237/CMMLoc_MNCLv3/checkpoints/k360_30-10_scG_pd10_pc4_spY_all/ash_file/cmmlocpp_mncl_rerank_v1/coarse_contN_epoch3_acc0.796_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth" --path_fine "/share/nas/cs-nas/zh932237/CMMLoc_MNCLv3/checkpoints/k360_30-10_scG_pd10_pc4_spY_all/ash_file/cmmlocpp_mncl_rerank_v1_fine_resume/fine_contY_epoch44_offset0.108_lr0.0003_obj-6-16_ecl0_eco0_p256_npa1_f-class-color-position-num.pth"
