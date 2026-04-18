@@ -1,0 +1,217 @@
+HF_HOME=/share/nas/cs-nas/zh932237/hf_cache/hf
+HF_HUB_CACHE=/share/nas/cs-nas/zh932237/hf_cache/hub
+TRANSFORMERS_CACHE=/share/nas/cs-nas/zh932237/hf_cache/transformers
+XDG_CACHE_HOME=/share/nas/cs-nas/zh932237/hf_cache/xdg
+Host: racc2-gpu-2.act.rdg.ac.uk
+GPU 0: NVIDIA L40S (UUID: GPU-9f1e7c64-6492-99db-fc58-84d646d70065)
+racc2-gpu-2.act.rdg.ac.uk
+Namespace(train=True
+ batch_size=64
+ max_batches=None
+ dataset='K360'
+ base_path='./data/k360_30-10_scG_pd10_pc4_spY_all/'
+ use_features=['class'
+ 'color'
+ 'position'
+ 'num']
+ shuffle=True
+ learning_rate=0.0005
+ continue_path=None
+ no_pc_augment=True
+ fine_embed_dim=128
+ offset_lambda=5
+ pmc_prob=0.0
+ pmc_threshold=0.4
+ fine_num_decoder_heads=4
+ fine_num_decoder_layers=2
+ block_head=8
+ fuse_layer=1
+ depth=3
+ pad_size=16
+ num_mentioned=6
+ describe_by='all'
+ margin=0.35
+ temperature=0.1
+ temperatures=1.0
+ top_k=[1
+ 3
+ 5]
+ ranking_loss='contrastive'
+ lambda_mncl=0.3
+ mncl_proj_dim=256
+ lambda_semantic_mncl=0.0
+ lambda_scene_hardneg=0.0
+ same_scene_negative_weight=2.0
+ hard_negative_topk=4
+ hard_negative_weight=1.5
+ semantic_top_objects=12
+ lambda_semantic_distill=0.0
+ teacher_coarse_path=''
+ lambda_teacher_distill=0.0
+ teacher_temperature=0.07
+ use_trainable_reranker=True
+ lambda_reranker=0.5
+ reranker_hidden_dim=32
+ trainable_rerank_topn=50
+ coarse_embed_dim=256
+ pointnet_layers=3
+ pointnet_variation=0
+ pointnet_numpoints=256
+ pointnet_path='./checkpoints/pointnet_acc0.86_lr1_p256.pth'
+ pointnet_freeze=False
+ pointnet_features=2
+ input_drop=0.2
+ drop=0.2
+ dropout=0.1
+ n_heads=4
+ max_position_embed=60
+ class_embed=False
+ color_embed=False
+ object_size=28
+ num_objects=16
+ sft_factor=0.6
+ object_inter_module_num_heads=4
+ object_inter_module_num_layers=2
+ projection_dim=256
+ hungging_model='t5-large'
+ fixed_embedding=True
+ text_max_length=128
+ prealign_pointnet_path=''
+ prealign_color_path=''
+ prealign_mlp_path=''
+ use_amp=False
+ inter_module_num_heads=4
+ inter_module_num_layers=1
+ intra_module_num_heads=4
+ intra_module_num_layers=1
+ fine_intra_module_num_heads=4
+ fine_intra_module_num_layers=1
+ regressor_cell='pose'
+ regressor_learn='center'
+ regressor_eval='center'
+ epochs=20
+ lr_gamma=0.4
+ lr_scheduler='step'
+ lr_step=7.0
+ folder_name='coarse_batch64_epoch20'
+ cpus=0
+ optimizer='adam') 
+
+Directory: k360_30-10_scG_pd10_pc4_spY_all
+#####################
+########   Folder Name: coarse_batch64_epoch20
+#####################
+Kitti360CellDatasetMulti: 5 scenes, 28807 descriptions for 9961 unique poses, 11259 cells, flip True, close-cell False
+Kitti360CellDatasetMulti: 1 scenes, 3187 descriptions for 1116 unique poses, 1434 cells, flip False, close-cell False
+Kitti360CellDatasetMulti: 3 scenes, 11505 descriptions for 3932 unique poses, 4308 cells, flip False, close-cell False
+device: cuda NVIDIA L40S
+CellRetrievalNetwork, class embed False, color embed False, dim: 256, features: ['class', 'color', 'position', 'num']
+Encoded 28807 query texts in 173.84.
+Encoded 3187 query texts in 15.07.
+Encoded 11505 query texts in 61.19.
+	 lr 0.0005 loss 4.242 epoch 1 train-acc: 1-0.091 3-0.192 5-0.255 val-acc: 1-0.217 3-0.373 5-0.463 val-acc-close: 1-0.422 3-0.606 5-0.684 test-acc: 1-0.148 3-0.273 5-0.342 test-acc-close: 1-0.284 3-0.455 5-0.540 
+
+Saving model at 0.46 to ./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch1_acc0.463_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth
+Encoded 28807 query texts in 171.63.
+Encoded 3187 query texts in 14.62.
+Encoded 11505 query texts in 64.68.
+	 lr 0.0005 loss 2.057 epoch 2 train-acc: 1-0.145 3-0.285 5-0.369 val-acc: 1-0.373 3-0.618 5-0.708 val-acc-close: 1-0.714 3-0.861 5-0.900 test-acc: 1-0.326 3-0.547 5-0.622 test-acc-close: 1-0.610 3-0.770 5-0.818 
+
+Saving model at 0.71 to ./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch2_acc0.708_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth
+Removing ./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch1_acc0.463_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth
+Encoded 28807 query texts in 170.98.
+Encoded 3187 query texts in 14.66.
+Encoded 11505 query texts in 62.65.
+	 lr 0.0005 loss 1.572 epoch 3 train-acc: 1-0.171 3-0.337 5-0.430 val-acc: 1-0.376 3-0.651 5-0.743 val-acc-close: 1-0.747 3-0.889 5-0.922 test-acc: 1-0.351 3-0.582 5-0.660 test-acc-close: 1-0.658 3-0.806 5-0.851 
+
+Saving model at 0.74 to ./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch3_acc0.743_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth
+Removing ./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch2_acc0.708_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth
+Encoded 28807 query texts in 171.56.
+Encoded 3187 query texts in 14.57.
+Encoded 11505 query texts in 62.20.
+	 lr 0.0005 loss 1.368 epoch 4 train-acc: 1-0.203 3-0.390 5-0.488 val-acc: 1-0.394 3-0.677 5-0.767 val-acc-close: 1-0.763 3-0.907 5-0.934 test-acc: 1-0.365 3-0.594 5-0.680 test-acc-close: 1-0.676 3-0.817 5-0.864 
+
+Saving model at 0.77 to ./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch4_acc0.767_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth
+Removing ./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch3_acc0.743_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth
+Encoded 28807 query texts in 172.54.
+Encoded 3187 query texts in 15.19.
+Encoded 11505 query texts in 61.33.
+	 lr 0.0005 loss 1.243 epoch 5 train-acc: 1-0.222 3-0.418 5-0.518 val-acc: 1-0.403 3-0.682 5-0.777 val-acc-close: 1-0.767 3-0.914 5-0.943 test-acc: 1-0.369 3-0.606 5-0.689 test-acc-close: 1-0.684 3-0.831 5-0.874 
+
+Saving model at 0.78 to ./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch5_acc0.777_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth
+Removing ./checkpoints/k360_30-10_scG_pd10_pc4_spY_all/coarse_batch64_epoch20/coarse_contN_epoch4_acc0.767_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth
+Encoded 28807 query texts in 173.15.
+Encoded 3187 query texts in 14.61.
+Encoded 11505 query texts in 62.98.
+	 lr 0.0005 loss 1.157 epoch 6 train-acc: 1-0.247 3-0.452 5-0.553 val-acc: 1-0.393 3-0.673 5-0.767 val-acc-close: 1-0.758 3-0.900 5-0.932 test-acc: 1-0.370 3-0.605 5-0.687 test-acc-close: 1-0.684 3-0.826 5-0.871 
+
+Encoded 28807 query texts in 171.09.
+Encoded 3187 query texts in 14.67.
+Encoded 11505 query texts in 66.71.
+	 lr 0.0005 loss 1.094 epoch 7 train-acc: 1-0.272 3-0.486 5-0.586 val-acc: 1-0.392 3-0.668 5-0.755 val-acc-close: 1-0.754 3-0.901 5-0.929 test-acc: 1-0.371 3-0.597 5-0.675 test-acc-close: 1-0.679 3-0.818 5-0.859 
+
+Encoded 28807 query texts in 170.78.
+Encoded 3187 query texts in 15.21.
+Encoded 11505 query texts in 64.85.
+	 lr 0.0005 loss 0.965 epoch 8 train-acc: 1-0.286 3-0.509 5-0.606 val-acc: 1-0.406 3-0.663 5-0.757 val-acc-close: 1-0.752 3-0.890 5-0.925 test-acc: 1-0.371 3-0.599 5-0.681 test-acc-close: 1-0.675 3-0.818 5-0.862 
+
+Encoded 28807 query texts in 169.63.
+Encoded 3187 query texts in 14.66.
+Encoded 11505 query texts in 64.52.
+	 lr 0.0005 loss 0.926 epoch 9 train-acc: 1-0.302 3-0.523 5-0.622 val-acc: 1-0.393 3-0.649 5-0.743 val-acc-close: 1-0.747 3-0.883 5-0.919 test-acc: 1-0.364 3-0.592 5-0.672 test-acc-close: 1-0.667 3-0.814 5-0.859 
+
+Encoded 28807 query texts in 173.28.
+Encoded 3187 query texts in 15.71.
+Encoded 11505 query texts in 64.07.
+	 lr 0.0005 loss 0.896 epoch 10 train-acc: 1-0.300 3-0.524 5-0.623 val-acc: 1-0.373 3-0.638 5-0.724 val-acc-close: 1-0.727 3-0.867 5-0.903 test-acc: 1-0.351 3-0.579 5-0.658 test-acc-close: 1-0.652 3-0.798 5-0.845 
+
+Encoded 28807 query texts in 173.36.
+Encoded 3187 query texts in 14.80.
+Encoded 11505 query texts in 63.63.
+	 lr 0.0005 loss 0.873 epoch 11 train-acc: 1-0.320 3-0.548 5-0.648 val-acc: 1-0.370 3-0.622 5-0.725 val-acc-close: 1-0.701 3-0.865 5-0.907 test-acc: 1-0.342 3-0.568 5-0.652 test-acc-close: 1-0.629 3-0.783 5-0.838 
+
+Encoded 28807 query texts in 172.34.
+Encoded 3187 query texts in 14.68.
+Encoded 11505 query texts in 63.18.
+	 lr 0.0005 loss 0.855 epoch 12 train-acc: 1-0.322 3-0.556 5-0.656 val-acc: 1-0.375 3-0.618 5-0.714 val-acc-close: 1-0.697 3-0.859 5-0.903 test-acc: 1-0.338 3-0.554 5-0.636 test-acc-close: 1-0.611 3-0.766 5-0.824 
+
+Encoded 28807 query texts in 174.24.
+Encoded 3187 query texts in 15.45.
+Encoded 11505 query texts in 61.63.
+	 lr 0.0005 loss 0.834 epoch 13 train-acc: 1-0.333 3-0.569 5-0.671 val-acc: 1-0.357 3-0.603 5-0.702 val-acc-close: 1-0.681 3-0.849 5-0.896 test-acc: 1-0.329 3-0.546 5-0.631 test-acc-close: 1-0.604 3-0.762 5-0.820 
+
+Encoded 28807 query texts in 172.60.
+Encoded 3187 query texts in 14.71.
+Encoded 11505 query texts in 64.11.
+	 lr 0.0005 loss 0.814 epoch 14 train-acc: 1-0.337 3-0.574 5-0.673 val-acc: 1-0.350 3-0.589 5-0.683 val-acc-close: 1-0.666 3-0.835 5-0.881 test-acc: 1-0.315 3-0.522 5-0.608 test-acc-close: 1-0.571 3-0.733 5-0.801 
+
+Encoded 28807 query texts in 169.92.
+Encoded 3187 query texts in 14.71.
+Encoded 11505 query texts in 63.31.
+	 lr 0.0005 loss 0.763 epoch 15 train-acc: 1-0.351 3-0.590 5-0.688 val-acc: 1-0.333 3-0.563 5-0.666 val-acc-close: 1-0.645 3-0.817 5-0.869 test-acc: 1-0.310 3-0.521 5-0.607 test-acc-close: 1-0.562 3-0.735 5-0.796 
+
+Encoded 28807 query texts in 169.51.
+Encoded 3187 query texts in 14.62.
+Encoded 11505 query texts in 66.40.
+	 lr 0.0005 loss 0.753 epoch 16 train-acc: 1-0.347 3-0.587 5-0.689 val-acc: 1-0.320 3-0.554 5-0.654 val-acc-close: 1-0.625 3-0.801 5-0.866 test-acc: 1-0.298 3-0.508 5-0.593 test-acc-close: 1-0.545 3-0.722 5-0.789 
+
+Encoded 28807 query texts in 170.36.
+Encoded 3187 query texts in 14.69.
+Encoded 11505 query texts in 63.64.
+	 lr 0.0005 loss 0.738 epoch 17 train-acc: 1-0.353 3-0.595 5-0.696 val-acc: 1-0.315 3-0.539 5-0.646 val-acc-close: 1-0.611 3-0.794 5-0.862 test-acc: 1-0.290 3-0.498 5-0.582 test-acc-close: 1-0.532 3-0.711 5-0.779 
+
+Encoded 28807 query texts in 169.61.
+Encoded 3187 query texts in 14.62.
+Encoded 11505 query texts in 65.64.
+	 lr 0.0005 loss 0.733 epoch 18 train-acc: 1-0.354 3-0.596 5-0.696 val-acc: 1-0.318 3-0.533 5-0.640 val-acc-close: 1-0.615 3-0.780 5-0.848 test-acc: 1-0.288 3-0.493 5-0.581 test-acc-close: 1-0.530 3-0.709 5-0.780 
+
+Encoded 28807 query texts in 170.07.
+Encoded 3187 query texts in 15.22.
+Encoded 11505 query texts in 61.73.
+	 lr 0.0005 loss 0.728 epoch 19 train-acc: 1-0.361 3-0.603 5-0.703 val-acc: 1-0.298 3-0.529 5-0.634 val-acc-close: 1-0.597 3-0.776 5-0.845 test-acc: 1-0.283 3-0.492 5-0.580 test-acc-close: 1-0.523 3-0.706 5-0.776 
+
+Encoded 28807 query texts in 169.86.
+Encoded 3187 query texts in 14.65.
+Encoded 11505 query texts in 63.04.
+	 lr 0.0005 loss 0.720 epoch 20 train-acc: 1-0.363 3-0.603 5-0.703 val-acc: 1-0.300 3-0.528 5-0.632 val-acc-close: 1-0.590 3-0.779 5-0.846 test-acc: 1-0.279 3-0.479 5-0.562 test-acc-close: 1-0.512 3-0.694 5-0.763 
+

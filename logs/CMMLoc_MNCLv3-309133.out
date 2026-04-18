@@ -1,0 +1,108 @@
+HF_HOME=/share/nas/cs-nas/zh932237/hf_cache/hf
+HF_HUB_CACHE=/share/nas/cs-nas/zh932237/hf_cache/hub
+TRANSFORMERS_CACHE=/share/nas/cs-nas/zh932237/hf_cache/transformers
+XDG_CACHE_HOME=/share/nas/cs-nas/zh932237/hf_cache/xdg
+Host: racc2-gpu-2.act.rdg.ac.uk
+GPU 0: NVIDIA L40S (UUID: GPU-9f1e7c64-6492-99db-fc58-84d646d70065)
+racc2-gpu-2.act.rdg.ac.uk
+Namespace(train=True
+ batch_size=64
+ max_batches=None
+ dataset='K360'
+ base_path='./data/k360_30-10_scG_pd10_pc4_spY_all/'
+ use_features=['class'
+ 'color'
+ 'position'
+ 'num']
+ shuffle=True
+ learning_rate=0.0005
+ continue_path=None
+ no_pc_augment=True
+ fine_embed_dim=128
+ offset_lambda=5
+ pmc_prob=0.0
+ pmc_threshold=0.4
+ fine_num_decoder_heads=4
+ fine_num_decoder_layers=2
+ block_head=8
+ fuse_layer=1
+ depth=3
+ pad_size=16
+ num_mentioned=6
+ describe_by='all'
+ margin=0.35
+ temperature=0.1
+ temperatures=1.0
+ top_k=[1
+ 3
+ 5]
+ ranking_loss='contrastive'
+ lambda_mncl=0.3
+ mncl_proj_dim=256
+ lambda_semantic_mncl=0.0
+ lambda_scene_hardneg=0.0
+ same_scene_negative_weight=2.0
+ hard_negative_topk=4
+ hard_negative_weight=1.5
+ semantic_top_objects=12
+ lambda_semantic_distill=0.0
+ teacher_coarse_path=''
+ lambda_teacher_distill=0.0
+ teacher_temperature=0.07
+ use_trainable_reranker=True
+ lambda_reranker=0.5
+ reranker_hidden_dim=32
+ trainable_rerank_topn=50
+ coarse_embed_dim=256
+ pointnet_layers=3
+ pointnet_variation=0
+ pointnet_numpoints=256
+ pointnet_path='./checkpoints/pointnet_acc0.86_lr1_p256.pth'
+ pointnet_freeze=False
+ pointnet_features=2
+ input_drop=0.2
+ drop=0.2
+ dropout=0.1
+ n_heads=4
+ max_position_embed=60
+ class_embed=False
+ color_embed=False
+ object_size=28
+ num_objects=16
+ sft_factor=0.6
+ object_inter_module_num_heads=4
+ object_inter_module_num_layers=2
+ projection_dim=256
+ hungging_model='t5-large'
+ fixed_embedding=True
+ text_max_length=128
+ prealign_pointnet_path=''
+ prealign_color_path=''
+ prealign_mlp_path=''
+ use_amp=False
+ inter_module_num_heads=4
+ inter_module_num_layers=1
+ intra_module_num_heads=4
+ intra_module_num_layers=1
+ fine_intra_module_num_heads=4
+ fine_intra_module_num_layers=1
+ regressor_cell='pose'
+ regressor_learn='center'
+ regressor_eval='center'
+ epochs=20
+ lr_gamma=0.4
+ lr_scheduler='step'
+ lr_step=7.0
+ folder_name='coarse_batch64_epoch20v3'
+ cpus=0
+ optimizer='adam') 
+
+Directory: k360_30-10_scG_pd10_pc4_spY_all
+#####################
+########   Folder Name: coarse_batch64_epoch20v3
+#####################
+Kitti360CellDatasetMulti: 5 scenes, 28807 descriptions for 9961 unique poses, 11259 cells, flip True, close-cell False
+Kitti360CellDatasetMulti: 1 scenes, 3187 descriptions for 1116 unique poses, 1434 cells, flip False, close-cell False
+Kitti360CellDatasetMulti: 3 scenes, 11505 descriptions for 3932 unique poses, 4308 cells, flip False, close-cell False
+device: cuda NVIDIA L40S
+CellRetrievalNetwork, class embed False, color embed False, dim: 256, features: ['class', 'color', 'position', 'num']
